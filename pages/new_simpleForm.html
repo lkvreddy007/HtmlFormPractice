@@ -33,7 +33,8 @@
         </div>
         <div>
             <label for="tel">tel input type:</label>
-            <input type="tel" id="tel" name="tel">
+            <input type="tel" id="tel" name="tel" placeholder="Enter your Phone Number">
+            <error-output class="phone-error" for="tel"></error-output>
         </div>
         <div>
             <label for="search">search input type:</label>
@@ -80,6 +81,18 @@
             }
             else{
                 emailError.textContent = "Email is incorrect";
+            }
+        });
+
+        const phone = document.querySelector('#tel');
+        const phoneError = document.querySelector('.phone-error');
+        phone.addEventListener('input',function(){
+            let phoneRegex = RegExp("^\\d{2} [1-9]\\d{9}$");
+            if(phoneRegex.test(phone.value)){
+                phoneError.textContent = "";
+            }
+            else{
+                phoneError.textContent = "Phone Number is incorrect";
             }
         });
     </script>
